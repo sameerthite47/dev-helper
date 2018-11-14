@@ -1,0 +1,78 @@
+<div class="row mt-4">
+    <div class="col-md-8">
+      
+      <h3>
+        <a class="btn btn-sm btn-link mr-2" [routerLink]="[ '/admin/category' ]">
+          <i class="fa fa-arrow-left"></i>
+        </a>
+        Add category
+      </h3>
+    </div>
+    <div class="col-md-4">
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <form (ngSubmit)="onAdd(categoryForm)" #categoryForm="ngForm">
+            <div class="form-group">
+              <label for="">Name *</label>
+              <input 
+                type="text" 
+                name="name"
+                [(ngModel)]="category.name"
+                #categoryName="ngModel"
+                required
+                [ngClass]="{'is-invalid': categoryName.errors && categoryName.touched }"
+                class="form-control">
+                <small 
+                  class="form-text text-danger" 
+                  *ngIf="categoryName.errors?.required && categoryName.touched">
+                  Name is required...
+                </small>
+            </div>
+            <div class="form-group">
+              <label for="">Description *</label>
+              <textarea 
+                name="description" 
+                rows="3"
+                [(ngModel)]="category.description"
+                #categoryDesc="ngModel"
+                required
+                [ngClass]="{'is-invalid': categoryDesc.errors && categoryDesc.touched }"
+                class="form-control"></textarea>
+                <small 
+                  class="form-text text-danger" 
+                  *ngIf="categoryDesc.errors?.required && categoryDesc.touched">
+                  Description is required...
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="">Image URL *</label>
+                <input 
+                  type="url" 
+                  class="form-control"
+                  [(ngModel)]="category.imageUrl"
+                  #categoryImage="ngModel"
+                  required
+                  name="imageUrl"
+                  [ngClass]="{'is-invalid': categoryImage.errors && categoryImage.touched }">
+                  <small 
+                  class="form-text text-danger" 
+                  *ngIf="categoryImage.errors?.required && categoryImage.touched">
+                  Image URL is required...
+                </small>
+              </div>
+            <div class="form-group mt-4">
+              <button 
+                [disabled]="!categoryForm.valid"
+                class="btn btn-success">
+                Add
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

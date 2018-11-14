@@ -1,0 +1,12 @@
+.form-control:focus {
+    color: #444;
+    background-color: #fff;
+    border-color: rgb(15, 119, 217);
+    outline: 0;
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(15, 119, 217, 0.25);
+            box-shadow: 0 0 0 0.2rem rgba(15, 119, 217, 0.25);
+  }
+
+  .ql-editor {
+      min-height: 300px;
+  }

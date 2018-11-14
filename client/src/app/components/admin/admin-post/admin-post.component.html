@@ -1,0 +1,53 @@
+<div class="row mt-4">
+    <div class="col-md-8">
+      <h3>All posts</h3>
+    </div>
+    <div class="col-md-4">
+      <a 
+        class="btn btn-info btn-sm float-right" 
+        [routerLink]="[ '/admin/add-post' ]">
+        <i class="fa fa-plus mr-2"></i>New
+      </a>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col-md-12">
+      <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Title</th>
+              <th>Category</th>
+              <th>Created Date</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let post of posts; let i = index;">
+              <td>{{ i+1 }}</td>
+              <td>{{ post.title }}</td>
+              <td>{{ post.category.name }}</td>
+              <td>{{ post.createdDate | date:'medium' }}</td>
+              <td>
+                <span style="font-size:13px" class="badge badge-success" *ngIf="post.isActive">Active</span>
+                <span style="font-size:13px" class="badge badge-dark" *ngIf="!post.isActive">Inactive</span>
+              </td>
+              <td>
+                  <div class="btn-group">
+                    <a 
+                      class="btn btn-sm btn-warning" 
+                      [routerLink]="[ '/admin/edit-post', post._id ]">
+                      <i class="fa fa-edit"></i>
+                    </a>
+                    <button class="btn btn-sm btn-primary" (click)="onDelete(post._id)">
+                      <i class="fa fa-trash"></i>
+                    </button>
+                  </div>
+              </td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>
